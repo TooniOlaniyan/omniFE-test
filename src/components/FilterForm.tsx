@@ -20,10 +20,10 @@ const FilterForm = () => {
             <SelectTrigger className="w-[350px] p-6">
               <SelectValue placeholder="select age" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="light">Light</SelectItem>
-              <SelectItem value="dark">Dark</SelectItem>
-              <SelectItem value="system">System</SelectItem>
+            <SelectContent className="bg-white">
+              <SelectItem value="light">19</SelectItem>
+              <SelectItem value="dark">20</SelectItem>
+              <SelectItem value="system">25</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -33,10 +33,10 @@ const FilterForm = () => {
             <SelectTrigger className="w-[350px] p-6">
               <SelectValue placeholder="select state" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="light">Light</SelectItem>
-              <SelectItem value="dark">Dark</SelectItem>
-              <SelectItem value="system">System</SelectItem>
+            <SelectContent className="bg-white">
+              <SelectItem value="light">Abuja</SelectItem>
+              <SelectItem value="dark">Borno</SelectItem>
+              <SelectItem value="system">Kaduna</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -46,10 +46,11 @@ const FilterForm = () => {
             <SelectTrigger className="w-[350px] p-6">
               <SelectValue placeholder="select level" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="light">Light</SelectItem>
-              <SelectItem value="dark">Dark</SelectItem>
-              <SelectItem value="system">System</SelectItem>
+            <SelectContent className="bg-white">
+              <SelectItem value="light">100 level</SelectItem>
+              <SelectItem value="dark">200 level</SelectItem>
+              <SelectItem value="system">300 level</SelectItem>
+              <SelectItem value="system">400 level</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -59,10 +60,9 @@ const FilterForm = () => {
             <SelectTrigger className="w-[350px] p-6">
               <SelectValue placeholder="select gender" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="light">Light</SelectItem>
-              <SelectItem value="dark">Dark</SelectItem>
-              <SelectItem value="system">System</SelectItem>
+            <SelectContent className="bg-white">
+              <SelectItem value="light">male</SelectItem>
+              <SelectItem value="dark">female</SelectItem>
             </SelectContent>
           </Select>
         </div>

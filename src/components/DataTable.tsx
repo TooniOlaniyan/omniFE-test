@@ -39,7 +39,7 @@ const DataTable = () => {
               Ebonyi state
             </TableCell>
             <TableCell className="font-medium">
-              <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem]">Download Result</p>
+              <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem] cursor-pointer">Download Result</p>
             </TableCell>
           </TableRow>
         </TableBody>
@@ -59,7 +59,7 @@ const DataTable = () => {
               Ebonyi state
             </TableCell>
             <TableCell className="font-medium">
-              <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem]">Download Result</p>
+              <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem] cursor-pointer">Download Result</p>
             </TableCell>
           </TableRow>
         </TableBody>
@@ -79,7 +79,7 @@ const DataTable = () => {
               Ebonyi state
             </TableCell>
             <TableCell className="font-medium ">
-              <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem]">Download Result</p>
+              <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem] cursor-pointer">Download Result</p>
             </TableCell>
           </TableRow>
         </TableBody>
@@ -99,7 +99,7 @@ const DataTable = () => {
               Ebonyi state
             </TableCell>
             <TableCell className="font-medium">
-              <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem]">Download Result</p>
+              <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem] cursor-pointer">Download Result</p>
             </TableCell>
           </TableRow>
         </TableBody>
@@ -119,7 +119,7 @@ const DataTable = () => {
               Ebonyi state
             </TableCell>
             <TableCell className="font-medium">
-              <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem]">Download Result</p>
+              <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem] cursor-pointer">Download Result</p>
             </TableCell>
           </TableRow>
         </TableBody>
@@ -139,7 +139,7 @@ const DataTable = () => {
               Ebonyi state
             </TableCell>
             <TableCell className="font-medium">
-              <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem]">Download Result</p>
+              <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem] cursor-pointer">Download Result</p>
             </TableCell>
           </TableRow>
         </TableBody>
@@ -159,7 +159,7 @@ const DataTable = () => {
               Ebonyi state
             </TableCell>
             <TableCell className="font-medium ">
-              <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem]">Download Result</p>
+              <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem] cursor-pointer">Download Result</p>
             </TableCell>
           </TableRow>
         </TableBody>

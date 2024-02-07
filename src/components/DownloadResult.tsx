@@ -39,9 +39,9 @@ const DownloadResult = () => {
       </div>
       <Table>
         <TableHeader>
-          <TableRow className="bg-result-blue">
+          <TableRow className="bg-result-blue text-white">
             <TableHead className="">S/N</TableHead>
-            <TableHead>Coursr Code</TableHead>
+            <TableHead>Course Code</TableHead>
             <TableHead>Course Title</TableHead>
             <TableHead>Unit</TableHead>
             <TableHead>Grade</TableHead>
@@ -72,7 +72,7 @@ const DownloadResult = () => {
       </Table>
       <Table>
         <TableHeader>
-          <TableRow className="bg-result-blue">
+          <TableRow className="bg-result-blue text-white">
             <TableHead className="">UNTS</TableHead>
             <TableHead>UNTD</TableHead>
             <TableHead>GPTS</TableHead>

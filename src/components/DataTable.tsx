@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -6,8 +7,28 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { fetchStudentData } from "@/lib";
+import { StudentDataProps } from "@/types";
 
-const DataTable = () => {
+interface DataTableProps {
+  filteredData: StudentDataProps[]; // Accept filtered data as prop
+}
+
+const DataTable:React.FC<DataTableProps> = ({filteredData}) => {
+  const [allStudentInfo, setAllStudentInfo] = useState([]);
+  useEffect(() => {
+    const fetchAllData = async () => {
+      try {
+        const studentData = await fetchStudentData();
+        setAllStudentInfo(studentData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchAllData();
+  }, []);
+  const dataToDisplay = filteredData.length > 0 ? filteredData : allStudentInfo;
   return (
     <div className="bg-white">
       <Table>
@@ -24,144 +45,36 @@ const DataTable = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow>
-            <TableCell className="font-medium text-gray-400">01</TableCell>
-            <TableCell className="font-medium text-gray-400">
-              Chukwuma
-            </TableCell>
-            <TableCell className="font-medium text-gray-400">James</TableCell>
-            <TableCell className="font-medium text-gray-400">24</TableCell>
-            <TableCell className="font-medium text-gray-400">Male</TableCell>
-            <TableCell className="font-medium text-gray-400">
-              100 level
-            </TableCell>
-            <TableCell className="font-medium text-gray-400">
-              Ebonyi state
-            </TableCell>
-            <TableCell className="font-medium">
-              <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem] cursor-pointer">Download Result</p>
-            </TableCell>
-          </TableRow>
-        </TableBody>
-        <TableBody>
-          <TableRow>
-            <TableCell className="font-medium text-gray-400">01</TableCell>
-            <TableCell className="font-medium text-gray-400">
-              Chukwuma
-            </TableCell>
-            <TableCell className="font-medium text-gray-400">James</TableCell>
-            <TableCell className="font-medium text-gray-400">24</TableCell>
-            <TableCell className="font-medium text-gray-400">Male</TableCell>
-            <TableCell className="font-medium text-gray-400">
-              100 level
-            </TableCell>
-            <TableCell className="font-medium text-gray-400">
-              Ebonyi state
-            </TableCell>
-            <TableCell className="font-medium">
-              <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem] cursor-pointer">Download Result</p>
-            </TableCell>
-          </TableRow>
-        </TableBody>
-        <TableBody>
-          <TableRow>
-            <TableCell className="font-medium text-gray-400">01</TableCell>
-            <TableCell className="font-medium text-gray-400">
-              Chukwuma
-            </TableCell>
-            <TableCell className="font-medium text-gray-400">James</TableCell>
-            <TableCell className="font-medium text-gray-400">24</TableCell>
-            <TableCell className="font-medium text-gray-400">Male</TableCell>
-            <TableCell className="font-medium text-gray-400">
-              100 level
-            </TableCell>
-            <TableCell className="font-medium text-gray-400">
-              Ebonyi state
-            </TableCell>
-            <TableCell className="font-medium ">
-              <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem] cursor-pointer">Download Result</p>
-            </TableCell>
-          </TableRow>
-        </TableBody>
-        <TableBody>
-          <TableRow>
-            <TableCell className="font-medium text-gray-400">01</TableCell>
-            <TableCell className="font-medium text-gray-400">
-              Chukwuma
-            </TableCell>
-            <TableCell className="font-medium text-gray-400">James</TableCell>
-            <TableCell className="font-medium text-gray-400">24</TableCell>
-            <TableCell className="font-medium text-gray-400">Male</TableCell>
-            <TableCell className="font-medium text-gray-400">
-              100 level
-            </TableCell>
-            <TableCell className="font-medium text-gray-400">
-              Ebonyi state
-            </TableCell>
-            <TableCell className="font-medium">
-              <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem] cursor-pointer">Download Result</p>
-            </TableCell>
-          </TableRow>
-        </TableBody>
-        <TableBody>
-          <TableRow>
-            <TableCell className="font-medium text-gray-400">01</TableCell>
-            <TableCell className="font-medium text-gray-400">
-              Chukwuma
-            </TableCell>
-            <TableCell className="font-medium text-gray-400">James</TableCell>
-            <TableCell className="font-medium text-gray-400">24</TableCell>
-            <TableCell className="font-medium text-gray-400">Male</TableCell>
-            <TableCell className="font-medium text-gray-400">
-              100 level
-            </TableCell>
-            <TableCell className="font-medium text-gray-400">
-              Ebonyi state
-            </TableCell>
-            <TableCell className="font-medium">
-              <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem] cursor-pointer">Download Result</p>
-            </TableCell>
-          </TableRow>
-        </TableBody>
-        <TableBody>
-          <TableRow>
-            <TableCell className="font-medium text-gray-400">01</TableCell>
-            <TableCell className="font-medium text-gray-400">
-              Chukwuma
-            </TableCell>
-            <TableCell className="font-medium text-gray-400">James</TableCell>
-            <TableCell className="font-medium text-gray-400">24</TableCell>
-            <TableCell className="font-medium text-gray-400">Male</TableCell>
-            <TableCell className="font-medium text-gray-400">
-              100 level
-            </TableCell>
-            <TableCell className="font-medium text-gray-400">
-              Ebonyi state
-            </TableCell>
-            <TableCell className="font-medium">
-              <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem] cursor-pointer">Download Result</p>
-            </TableCell>
-          </TableRow>
-        </TableBody>
-        <TableBody>
-          <TableRow>
-            <TableCell className="font-medium text-gray-400">01</TableCell>
-            <TableCell className="font-medium text-gray-400">
-              Chukwuma
-            </TableCell>
-            <TableCell className="font-medium text-gray-400">James</TableCell>
-            <TableCell className="font-medium text-gray-400">24</TableCell>
-            <TableCell className="font-medium text-gray-400">Male</TableCell>
-            <TableCell className="font-medium text-gray-400">
-              100 level
-            </TableCell>
-            <TableCell className="font-medium text-gray-400">
-              Ebonyi state
-            </TableCell>
-            <TableCell className="font-medium ">
-              <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem] cursor-pointer">Download Result</p>
-            </TableCell>
-          </TableRow>
+          {dataToDisplay.map((info: StudentDataProps) => (
+            <TableRow key={info.id}>
+              <TableCell className="font-medium text-gray-400">
+                {info.id}
+              </TableCell>
+              <TableCell className="font-medium text-gray-400">
+                {info.surname}
+              </TableCell>
+              <TableCell className="font-medium text-gray-400">
+                {info.firstname}
+              </TableCell>
+              <TableCell className="font-medium text-gray-400">
+                {info.age}
+              </TableCell>
+              <TableCell className="font-medium text-gray-400">
+                {info.gender}
+              </TableCell>
+              <TableCell className="font-medium text-gray-400">
+                {info.level}
+              </TableCell>
+              <TableCell className="font-medium text-gray-400">
+                {info.state}
+              </TableCell>
+              <TableCell className="font-medium">
+                <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem] cursor-pointer">
+                  Download Result
+                </p>
+              </TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </div>

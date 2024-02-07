@@ -1,8 +1,10 @@
 import './index.css'
 import FilterForm from "./components/FilterForm";
 import DataTable from './components/DataTable';
+import { useState } from 'react';
 
 function App() {
+  const [data, setData] = useState([])
   return (
     <div className="w-full p-10 h-full bg-grey flex flex-col gap-10">
       <header>
@@ -12,7 +14,7 @@ function App() {
           <FilterForm />
         </div>
         <div>
-          <DataTable/>
+          <DataTable filteredData={data}/>
         </div>
     </div>
   );

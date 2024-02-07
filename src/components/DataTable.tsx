@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+
 import {
   Table,
   TableBody,
@@ -7,27 +7,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { fetchStudentData } from "@/lib";
 import { StudentDataProps } from "@/types";
 
-interface DataTableProps {
-  filteredData: StudentDataProps[]; // Accept filtered data as prop
-}
 
-const DataTable:React.FC<DataTableProps> = ({filteredData}) => {
-  const [allStudentInfo, setAllStudentInfo] = useState([]);
-  useEffect(() => {
-    const fetchAllData = async () => {
-      try {
-        const studentData = await fetchStudentData();
-        setAllStudentInfo(studentData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
 
-    fetchAllData();
-  }, []);
+const DataTable: React.FC<{
+  filteredData: StudentDataProps[];
+  allStudentInfo: StudentDataProps[];
+}> = ({ filteredData, allStudentInfo }) => {
   const dataToDisplay = filteredData.length > 0 ? filteredData : allStudentInfo;
   return (
     <div className="bg-white">

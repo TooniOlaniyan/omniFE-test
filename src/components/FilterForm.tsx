@@ -1,13 +1,12 @@
 import { ChangeEvent, useState } from "react";
-import { fetchStudentData } from "@/lib";
 import { FilterProps } from "@/types";
 
-const FilterForm = () => {
+const FilterForm = ({ onFilterChange }: any) => {
   const [loading, setLoading] = useState(false);
   const [filters, setFilters] = useState<FilterProps>({
-    age: '' ,
+    age: "",
     state: "",
-    level: '',
+    level: "",
     gender: "",
   });
   const handleFilterChange = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -18,28 +17,11 @@ const FilterForm = () => {
       [name]: strValue,
     }));
   };
-
-  const handleSearchFilter = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSearchFilter = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(filters);
-
     setLoading(true);
-    try {
-      const filteredData = await fetchStudentData(filters);
-      console.log(filteredData)
-      setFilters(filteredData);
-
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    } finally {
-      setLoading(false);
-      setFilters({
-        age: "",
-        level: "",
-        state: "",
-        gender: "", 
-      });
-    }
+    onFilterChange(filters); // Invoke callback function with filters
+    setLoading(false);
   };
   return (
     <div className="bg-white flex flex-col gap-5 p-8 items-start">
@@ -57,7 +39,7 @@ const FilterForm = () => {
             name="age"
             className="w-[350px] p-4 rounded-xl border-2 border-gray-400 text-gray-400"
           >
-            <option value=''>Select Age</option>
+            <option value="">Select Age</option>
             <option value="19">19</option>
             <option value="23">23</option>
             <option value="25">25</option>
@@ -71,7 +53,7 @@ const FilterForm = () => {
             name="state"
             className="w-[350px] p-4 rounded-xl border-2 border-gray-400 text-gray-400"
           >
-            <option value=''>Select State</option>
+            <option value="">Select State</option>
             <option value="Abuja">Abuja</option>
             <option value="Kaduna">Kaduna</option>
             <option value="Borno">Borno</option>
@@ -85,7 +67,7 @@ const FilterForm = () => {
             name="level"
             className="w-[350px] p-4 rounded-xl border-2 border-gray-400 text-gray-400"
           >
-            <option value=''>Select Level</option>
+            <option value="">Select Level</option>
             <option value="100">100</option>
             <option value="200">200</option>
             <option value="300">300</option>
@@ -100,7 +82,7 @@ const FilterForm = () => {
             name="gender"
             className="w-[350px] p-4 rounded-xl border-2 border-gray-400 text-gray-400"
           >
-            <option value=''>Select Gender</option>
+            <option value="">Select Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
           </select>

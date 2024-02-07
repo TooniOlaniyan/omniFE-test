@@ -1,4 +1,3 @@
-
 import {
   Table,
   TableBody,
@@ -7,15 +6,17 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { handleDownload } from "@/lib";
 import { StudentDataProps } from "@/types";
-
-
 
 const DataTable: React.FC<{
   filteredData: StudentDataProps[];
   allStudentInfo: StudentDataProps[];
 }> = ({ filteredData, allStudentInfo }) => {
   const dataToDisplay = filteredData.length > 0 ? filteredData : allStudentInfo;
+  const handleDownloadClick = async () => {
+    await handleDownload(); // Call the handleDownload function
+  };
   return (
     <div className="bg-white">
       <Table>
@@ -56,7 +57,10 @@ const DataTable: React.FC<{
                 {info.state}
               </TableCell>
               <TableCell className="font-medium">
-                <p className="text-white bg-primary-green text-center w-[70%] p-[0.3rem] cursor-pointer">
+                <p
+                  onClick={handleDownloadClick}
+                  className="text-white bg-primary-green text-center w-[70%] p-[0.3rem] cursor-pointer"
+                >
                   Download Result
                 </p>
               </TableCell>

@@ -4,9 +4,11 @@ import DataTable from "./components/DataTable";
 import { useEffect, useState } from "react";
 import { fetchStudentData } from "./lib";
 import { FilterProps, StudentDataProps } from "./types";
+import DownloadResult from "./components/DownloadResult";
 
 function App() {
   const [allStudentInfo, setAllStudentInfo] = useState<StudentDataProps[]>([]);
+  const [loading, setLoading] = useState(false);
   const [filteredData, setFilteredData] = useState<StudentDataProps[]>([]);
   useEffect(() => {
     const fetchAllData = async () => {
@@ -22,10 +24,13 @@ function App() {
   }, []);
   const handleFilterChange = async (filters: FilterProps) => {
     try {
+      setLoading(true);
       const filteredData = await fetchStudentData(filters);
       setFilteredData(filteredData);
+      setLoading(false)
     } catch (error) {
       console.error("Error fetching filtered data:", error);
+      setLoading(false);
     }
   };
   return (
@@ -34,7 +39,7 @@ function App() {
         <h1 className="font-bold text-3xl">Student Data Table</h1>
       </header>
       <div>
-        <FilterForm onFilterChange={handleFilterChange} />
+        <FilterForm loading={loading} onFilterChange={handleFilterChange} />
       </div>
       <div>
         <DataTable
@@ -42,6 +47,7 @@ function App() {
           filteredData={filteredData}
         />
       </div>
+      <DownloadResult/>
     </div>
   );
 }

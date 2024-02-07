@@ -20,7 +20,9 @@ module.exports = {
       colors: {
        "primary-green": '#46c35f',
        "grey": '#f6f6f6',
-       "white": '#fff'
+       "white": '#fff',
+       "result-blue": '#0d7590',
+       "result-gray": '#f2f2f2',
       },
       borderRadius: {
         lg: "var(--radius)",

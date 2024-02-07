@@ -1,8 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import { FilterProps } from "@/types";
 
-const FilterForm = ({ onFilterChange }: any) => {
-  const [loading, setLoading] = useState(false);
+const FilterForm = ({ onFilterChange , loading }: any) => {
   const [filters, setFilters] = useState<FilterProps>({
     age: "",
     state: "",
@@ -18,10 +17,26 @@ const FilterForm = ({ onFilterChange }: any) => {
     }));
   };
   const handleSearchFilter = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-    onFilterChange(filters); // Invoke callback function with filters
-    setLoading(false);
+    try {
+      e.preventDefault();
+      onFilterChange(filters); 
+      setFilters({
+        age: "",
+        state: "",
+        level: "",
+        gender: "",
+      });
+      
+    } catch (error) {
+      console.log(error)
+       setFilters({
+         age: "",
+         state: "",
+         level: "",
+         gender: "",
+       });
+      
+    }
   };
   return (
     <div className="bg-white flex flex-col gap-5 p-8 items-start">

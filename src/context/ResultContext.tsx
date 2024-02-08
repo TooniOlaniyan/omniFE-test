@@ -6,8 +6,8 @@ const ResultContext = createContext('');
 
 
 
-export const ResultProvider: React.FC<{ children: ReactNode }> = (
-  {children}
+export const ResultProvider = (
+  {children} : {children: ReactNode}
 ) => {
   const [resultData, setResultData] = useState('');
   const handleDownload = async (id: string) => {
@@ -22,17 +22,19 @@ export const ResultProvider: React.FC<{ children: ReactNode }> = (
       const response = await fetch(url, requestOptions);
       const data = await response.json();
       setResultData(data);
-
-      // Return the data to be used by the caller
       return data;
     } catch (error) {
       console.error("Error downloading results:", error);
       return null;
     }
   };
+  const value = {
+    resultData,
+    handleDownload
+  }
 
   return (
-    <ResultContext.Provider value={{ resultData , handleDownload }}>
+    <ResultContext.Provider value={value}>
       {children}
     </ResultContext.Provider>
   );

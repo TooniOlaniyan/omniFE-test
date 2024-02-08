@@ -8,7 +8,9 @@ import {
 } from "@/components/ui/table";
 import { resultData } from "@/constant";
 import { cummulative } from "@/constant";
+import { useResultContext } from "@/context/ResultContext";
 const DownloadResult = () => {
+  const {} = useResultContext()
   return (
     <main className="flex flex-col gap-10">
       <header className="flex justify-evenly gap-5">

@@ -1,3 +1,4 @@
+
 import {
   Table,
   TableBody,
@@ -15,8 +16,15 @@ const DataTable: React.FC<{
 }> = ({ filteredData, allStudentInfo }) => {
   const message = "No Such Filter Found.Would you like to try again";
   const dataToDisplay = filteredData.length > 0 ? filteredData :  allStudentInfo;
-  const handleDownloadClick = async () => {
-    await handleDownload();
+  const handleDownloadClick = async (id:string) => {
+   try {
+     await handleDownload(id);
+    
+    
+   } catch (error) {
+    console.log(error)
+    
+   }
   };
   return (
     <div className="bg-white">
@@ -60,7 +68,7 @@ const DataTable: React.FC<{
                 </TableCell>
                 <TableCell className="font-medium">
                   <p
-                    onClick={handleDownloadClick}
+                    onClick={() => handleDownloadClick(info.id)}
                     className="text-white bg-primary-green text-center w-[70%] p-[0.3rem] cursor-pointer"
                   >
                     Download Result

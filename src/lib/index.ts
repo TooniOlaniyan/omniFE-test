@@ -1,8 +1,7 @@
-import { jsPDF } from "jspdf";
+import * as ReactDOMServer from "react-dom/server";
 import { FilterProps } from "@/types";
-import ReactDOMServer from "react-dom/server";
-import { PureComponent } from "react";
 import DownloadResult from "@/components/DownloadResult";
+import jsPDF from "jspdf";
 
 export const fetchStudentData = async (filters?: FilterProps) => {
   try {
@@ -36,16 +35,31 @@ export const fetchStudentData = async (filters?: FilterProps) => {
   }
 };
 
-export const handleDownload = async () => {
+export const handleDownload = async (id: string) => {
   try {
-    // const componentHtml = ReactDOMServer.renderToString(<DownloadResult />);
-    // const pdf = new jsPDF();
-    // pdf.html(componentHtml, {
-    //   callback: () => {
-    //     // Save the PDF when rendering is done
-    //     pdf.save("student_result.pdf");
-    //   },
+    let url = `https://test.omniswift.com.ng/api/viewResult/${id}`;
+    let requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const response = await fetch(url, requestOptions);
+    const data = await response.json();
+    // const componentHtml = ReactDOMServer.renderToReadableStream(
+    //   <DownloadResult data={data} />
+    // );
+    const pdf = new jsPDF();
+    // pdf.html(document.querySelector('#contnet') , {
+    //   callback:()=>{
+    //     pdf.save("result.pdf");
+    //   }
     // });
+    // pdf.text(data , 10 ,10)
+    pdf.save("result.pdf");
+    
+    console.log(data);
+    return data;
   } catch (error) {
     console.error("Error downloading results:", error);
   }

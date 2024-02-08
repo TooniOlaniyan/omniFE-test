@@ -26,7 +26,8 @@ function App() {
     try {
       setLoading(true);
       const filteredData = await fetchStudentData(filters);
-      setFilteredData(filteredData);
+      console.log(filteredData)
+        setFilteredData(filteredData);
       setLoading(false)
     } catch (error) {
       console.error("Error fetching filtered data:", error);

@@ -8,7 +8,7 @@ export interface StudentDataProps {
   state: string;
 }
 export interface FilterProps {
-  age: string;
+  age: string | number;
   state: string;
   level: string;
   gender: string;

@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import { FilterProps } from "@/types";
 
-const FilterForm = ({ onFilterChange , loading }: any) => {
+const FilterForm = ({ onFilterChange, loading  }: any) => {
   const [filters, setFilters] = useState<FilterProps>({
     age: "",
     state: "",
@@ -19,23 +19,10 @@ const FilterForm = ({ onFilterChange , loading }: any) => {
   const handleSearchFilter = (e: React.FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
-      onFilterChange(filters); 
-      setFilters({
-        age: "",
-        state: "",
-        level: "",
-        gender: "",
-      });
-      
+      console.log(filters);
+      onFilterChange(filters);
     } catch (error) {
-      console.log(error)
-       setFilters({
-         age: "",
-         state: "",
-         level: "",
-         gender: "",
-       });
-      
+      console.log(error);
     }
   };
   return (
@@ -55,9 +42,9 @@ const FilterForm = ({ onFilterChange , loading }: any) => {
             className="w-[350px] p-4 rounded-xl border-2 border-gray-400 text-gray-400"
           >
             <option value="">Select Age</option>
-            <option value="19">19</option>
-            <option value="23">23</option>
-            <option value="25">25</option>
+            <option value={19}>19</option>
+            <option value={20}>20</option>
+            <option value={25}>25</option>
           </select>
         </div>
         <div className="flex flex-col gap-1">
@@ -70,7 +57,7 @@ const FilterForm = ({ onFilterChange , loading }: any) => {
           >
             <option value="">Select State</option>
             <option value="Abuja">Abuja</option>
-            <option value="Kaduna">Kaduna</option>
+            <option value="kaduna">Kaduna</option>
             <option value="Borno">Borno</option>
           </select>
         </div>
@@ -83,10 +70,10 @@ const FilterForm = ({ onFilterChange , loading }: any) => {
             className="w-[350px] p-4 rounded-xl border-2 border-gray-400 text-gray-400"
           >
             <option value="">Select Level</option>
-            <option value="100">100</option>
-            <option value="200">200</option>
-            <option value="300">300</option>
-            <option value="400">400</option>
+            <option value="100 Level">100</option>
+            <option value="200 Level">200</option>
+            <option value="300 Level">300</option>
+            <option value="400 Level">400</option>
           </select>
         </div>
         <div className="flex flex-col gap-1">

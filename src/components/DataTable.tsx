@@ -13,9 +13,10 @@ const DataTable: React.FC<{
   filteredData: StudentDataProps[];
   allStudentInfo: StudentDataProps[];
 }> = ({ filteredData, allStudentInfo }) => {
-  const dataToDisplay = filteredData.length > 0 ? filteredData : allStudentInfo;
+  const message = "No Such Filter Found.Would you like to try again";
+  const dataToDisplay = filteredData.length > 0 ? filteredData :  allStudentInfo;
   const handleDownloadClick = async () => {
-    await handleDownload(); // Call the handleDownload function
+    await handleDownload();
   };
   return (
     <div className="bg-white">
@@ -33,39 +34,50 @@ const DataTable: React.FC<{
           </TableRow>
         </TableHeader>
         <TableBody>
-          {dataToDisplay.map((info: StudentDataProps) => (
-            <TableRow key={info.id}>
-              <TableCell className="font-medium text-gray-400">
-                {info.id}
-              </TableCell>
-              <TableCell className="font-medium text-gray-400">
-                {info.surname}
-              </TableCell>
-              <TableCell className="font-medium text-gray-400">
-                {info.firstname}
-              </TableCell>
-              <TableCell className="font-medium text-gray-400">
-                {info.age}
-              </TableCell>
-              <TableCell className="font-medium text-gray-400">
-                {info.gender}
-              </TableCell>
-              <TableCell className="font-medium text-gray-400">
-                {info.level}
-              </TableCell>
-              <TableCell className="font-medium text-gray-400">
-                {info.state}
-              </TableCell>
-              <TableCell className="font-medium">
-                <p
-                  onClick={handleDownloadClick}
-                  className="text-white bg-primary-green text-center w-[70%] p-[0.3rem] cursor-pointer"
-                >
-                  Download Result
-                </p>
+          {dataToDisplay.length > 0 ? (
+            dataToDisplay.map((info: StudentDataProps) => (
+              <TableRow key={info.id}>
+                <TableCell className="font-medium text-gray-400">
+                  {info.id}
+                </TableCell>
+                <TableCell className="font-medium text-gray-400">
+                  {info.surname}
+                </TableCell>
+                <TableCell className="font-medium text-gray-400">
+                  {info.firstname}
+                </TableCell>
+                <TableCell className="font-medium text-gray-400">
+                  {info.age}
+                </TableCell>
+                <TableCell className="font-medium text-gray-400">
+                  {info.gender}
+                </TableCell>
+                <TableCell className="font-medium text-gray-400">
+                  {info.level}
+                </TableCell>
+                <TableCell className="font-medium text-gray-400">
+                  {info.state}
+                </TableCell>
+                <TableCell className="font-medium">
+                  <p
+                    onClick={handleDownloadClick}
+                    className="text-white bg-primary-green text-center w-[70%] p-[0.3rem] cursor-pointer"
+                  >
+                    Download Result
+                  </p>
+                </TableCell>
+              </TableRow>
+            ))
+          ) : (
+            <TableRow>
+              <TableCell
+                colSpan={8}
+                className="text-center font-bold text-red-900"
+              >
+                {message}
               </TableCell>
             </TableRow>
-          ))}
+          )}
         </TableBody>
       </Table>
     </div>

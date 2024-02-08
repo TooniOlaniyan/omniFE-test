@@ -1,7 +1,7 @@
 import { jsPDF } from "jspdf";
 import { FilterProps } from "@/types";
 import ReactDOMServer from "react-dom/server";
-import {PureComponent} from 'react'
+import { PureComponent } from "react";
 import DownloadResult from "@/components/DownloadResult";
 
 export const fetchStudentData = async (filters?: FilterProps) => {
@@ -23,6 +23,7 @@ export const fetchStudentData = async (filters?: FilterProps) => {
     }
     const response = await fetch(url, requestOptions);
     const data = await response.json();
+    console.log(data);
 
     if (response.ok) {
       return data.data.students;

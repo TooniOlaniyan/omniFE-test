@@ -49,14 +49,18 @@ export const handleDownload = async (id: string) => {
     // const componentHtml = ReactDOMServer.renderToReadableStream(
     //   <DownloadResult data={data} />
     // );
-    const pdf = new jsPDF();
-    // pdf.html(document.querySelector('#contnet') , {
-    //   callback:()=>{
-    //     pdf.save("result.pdf");
-    //   }
-    // });
-    // pdf.text(data , 10 ,10)
-    pdf.save("result.pdf");
+    const contentElement = document.querySelector("#contnet");
+    if (contentElement instanceof HTMLElement) {
+      const pdf = new jsPDF();
+      pdf.html(contentElement, {
+        callback: () => {
+          pdf.save("result.pdf");
+        },
+      });
+    } else {
+      console.log("Element with id 'contnet' not found.");
+    }
+ 
     
     console.log(data);
     return data;

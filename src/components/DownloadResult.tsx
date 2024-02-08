@@ -12,7 +12,7 @@ import { useResultContext } from "@/context/ResultContext";
 const DownloadResult = () => {
   const {} = useResultContext()
   return (
-    <main className="flex flex-col gap-10">
+    <main id="content" className="flex flex-col gap-10">
       <header className="flex justify-evenly gap-5">
         <img src="#" alt="logo" />
         <div className="flex flex-col items-center gap-4">

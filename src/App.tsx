@@ -48,7 +48,7 @@ function App() {
           filteredData={filteredData}
         />
       </div>
-      {/* <DownloadResult/> */}
+      <DownloadResult/>
     </div>
   );
 }

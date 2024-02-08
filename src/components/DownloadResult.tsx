@@ -1,3 +1,4 @@
+import { usePDF } from "react-to-pdf";
 import {
   Table,
   TableBody,
@@ -8,11 +9,14 @@ import {
 } from "@/components/ui/table";
 import { resultData } from "@/constant";
 import { cummulative } from "@/constant";
-import { useResultContext } from "@/context/ResultContext";
+
 const DownloadResult = () => {
-  const {} = useResultContext()
+  const { toPDF, targetRef } = usePDF({ filename: "studentresult.pdf" });
+  const handleClick = () => {
+    toPDF();
+  };
   return (
-    <main id="content" className="flex flex-col gap-10">
+    <main ref={targetRef} className="flex flex-col gap-10 p-52">
       <header className="flex justify-evenly gap-5">
         <img src="#" alt="logo" />
         <div className="flex flex-col items-center gap-4">
@@ -31,12 +35,22 @@ const DownloadResult = () => {
       </header>
       <div className="flex flex-col">
         <div className="flex justify-between">
-          <p className="font-bold">Name:Chi James</p>
-          <p className="text-gray-400">Reg No: FCE/PGDE/2021/002</p>
+          <p className="font-bold">
+            Name: <span className="text-gray-400 ml-4">Chi James</span>
+          </p>
+          <p className="font-bold">
+            Reg No:{" "}
+            <span className="text-gray-400 ml-4">FCE/PGDE/2021/002</span>
+          </p>
         </div>
         <div className="flex justify-between">
-          <p className="font-bold">level:100 level</p>
-          <p className="text-gray-400">Session: 2022/2023 Session</p>
+          <p className="font-bold">
+            level: <span className="text-gray-400 ml-4">100 level</span>
+          </p>
+          <p className="font-bold">
+            Session:{" "}
+            <span className="text-gray-400 ml-4">2022/2023 Session</span>
+          </p>
         </div>
       </div>
       <Table>
@@ -52,27 +66,54 @@ const DownloadResult = () => {
         </TableHeader>
         <TableBody>
           {resultData.map((info, index) => (
-            <TableRow key={index}>
-              <TableCell className="font-medium text-gray-400">
+            <TableRow className="w-full" key={index}>
+              <TableCell
+                className={`font-medium text-gray-400 ${
+                  index % 2 === 0 ? "bg-gray-200" : "bg-white"
+                }`}
+              >
                 {info.coursecode}
               </TableCell>
-              <TableCell className="font-medium text-gray-400">
+              <TableCell
+                className={`font-medium text-gray-400 ${
+                  index % 2 === 0 ? "bg-gray-200" : "bg-white"
+                }`}
+              >
                 {info.title}
               </TableCell>
-              <TableCell className="font-medium text-gray-400">
+              <TableCell
+                className={`font-medium text-gray-400 ${
+                  index % 2 === 0 ? "bg-gray-200" : "bg-white"
+                }`}
+              >
                 {info.creditunit}
               </TableCell>
-              <TableCell className="font-medium text-gray-400">
+              <TableCell
+                className={`font-medium text-gray-400 ${
+                  index % 2 === 0 ? "bg-gray-200" : "bg-white"
+                }`}
+              >
                 {info.grade}
               </TableCell>
-              <TableCell className="font-medium text-gray-400">
+              <TableCell
+                className={`font-medium text-gray-400 ${
+                  index % 2 === 0 ? "bg-gray-200" : "bg-white"
+                }`}
+              >
+                {info.totalpoint}
+              </TableCell>
+              <TableCell
+                className={`font-medium text-gray-400 ${
+                  index % 2 === 0 ? "bg-gray-200" : "bg-white"
+                }`}
+              >
                 {info.totalpoint}
               </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      <Table>
+      <Table className="w-[30rem]">
         <TableHeader>
           <TableRow className="bg-result-blue text-white">
             <TableHead className="">UNTS</TableHead>
@@ -83,7 +124,7 @@ const DownloadResult = () => {
             <TableHead>GPATD</TableHead>
           </TableRow>
         </TableHeader>
-        <TableBody>
+        <TableBody className="bg-gray-200">
           {cummulative.map((info, index) => (
             <TableRow key={index}>
               <TableCell className="font-medium text-gray-400">
@@ -110,6 +151,7 @@ const DownloadResult = () => {
       </Table>
       <p>Remarks: Pass</p>
       <div>Resgistra</div>
+      <button onClick={handleClick}>Download</button>
     </main>
   );
 };

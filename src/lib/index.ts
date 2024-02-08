@@ -1,4 +1,4 @@
-import * as ReactDOMServer from "react-dom/server";
+import ReactDOM  from "react-dom";
 import { FilterProps } from "@/types";
 import DownloadResult from "@/components/DownloadResult";
 import jsPDF from "jspdf";
@@ -46,22 +46,7 @@ export const handleDownload = async (id: string) => {
     };
     const response = await fetch(url, requestOptions);
     const data = await response.json();
-    // const componentHtml = ReactDOMServer.renderToReadableStream(
-    //   <DownloadResult data={data} />
-    // );
-    const contentElement = document.querySelector("#contnet");
-    if (contentElement instanceof HTMLElement) {
-      const pdf = new jsPDF();
-      pdf.html(contentElement, {
-        callback: () => {
-          pdf.save("result.pdf");
-        },
-      });
-    } else {
-      console.log("Element with id 'contnet' not found.");
-    }
- 
-    
+
     console.log(data);
     return data;
   } catch (error) {

@@ -29,9 +29,9 @@ export const resultData = [
 }
 ]
 
-export const cummulative = [
+export const cummulative = 
     {
-        units:84,
+        unts:84,
         untd:76,
         gpts:87,
         gptd: 97,
@@ -39,4 +39,3 @@ export const cummulative = [
         gpatd:5,
         remarks: 'Pass'
         }
-]

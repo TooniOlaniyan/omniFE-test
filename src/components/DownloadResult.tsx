@@ -6,12 +6,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { resultData } from "@/constant";
-import { cummulative } from "@/constant";
 import { CourseResult } from "@/types";
 
 const DownloadResult = ({ data }: any) => {
-  const handleClick = () => {};
   const { firstname, surname, level } = data;
   return (
     <main className="flex flex-col gap-10 p-52">
@@ -65,7 +62,7 @@ const DownloadResult = ({ data }: any) => {
         </TableHeader>
         <TableBody>
           {data.result &&
-            data.result.map((resultItem:CourseResult, index:number) => (
+            data.result.map((resultItem: CourseResult, index: number) => (
               <TableRow key={index}>
                 <TableCell className="font-medium text-gray-400">
                   {index}
@@ -101,33 +98,32 @@ const DownloadResult = ({ data }: any) => {
           </TableRow>
         </TableHeader>
         <TableBody className="bg-gray-200">
-          {cummulative.map((info, index) => (
-            <TableRow key={index}>
+          {data.cummulative && (
+            <TableRow>
               <TableCell className="font-medium text-gray-400">
-                {info.units}
+                {data.cummulative.unts}
               </TableCell>
               <TableCell className="font-medium text-gray-400">
-                {info.untd}
+                {data.cummulative.untd}
               </TableCell>
               <TableCell className="font-medium text-gray-400">
-                {info.gpts}
+                {data.cummulative.gpts}
               </TableCell>
               <TableCell className="font-medium text-gray-400">
-                {info.gptd}
+                {data.cummulative.gptd}
               </TableCell>
               <TableCell className="font-medium text-gray-400">
-                {info.gpats}
+                {data.cummulative.gpats}
               </TableCell>
               <TableCell className="font-medium text-gray-400">
-                {info.gpatd}
+                {data.cummulative.gpatd}
               </TableCell>
             </TableRow>
-          ))}
+          )}
         </TableBody>
       </Table>
       <p>Remarks: Pass</p>
       <div>Resgistra</div>
-      <button onClick={handleClick}>Download</button>
     </main>
   );
 };

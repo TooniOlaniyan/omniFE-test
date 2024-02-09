@@ -23,12 +23,12 @@ export interface CourseResult {
 }
 
 export interface Cummulative {
-  unts: string;
-  untd: string;
-  gpts: string;
-  gptd: string;
-  gpats: string;
-  gpatd: string;
+  unts: number;
+  untd: number;
+  gpts: number;
+  gptd: number;
+  gpats: number;
+  gpatd: number;
   remarks: string;
 }
 

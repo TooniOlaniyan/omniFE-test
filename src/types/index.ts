@@ -17,26 +17,26 @@ export interface FilterProps {
 export interface CourseResult {
   coursecode: string;
   title: string;
-  credit_unit: number;
+  credit_unit: string;
   grade: string;
-  total_point: number;
+  total_point: string;
 }
 
 export interface Cummulative {
-  unts: number;
-  untd: number;
-  gpts: number;
-  gptd: number;
-  gpats: number;
-  gpatd: number;
+  unts: string;
+  untd: string;
+  gpts: string;
+  gptd: string;
+  gpats: string;
+  gpatd: string;
   remarks: string;
 }
 
 export interface DataProps {
-  id: number;
+  id: number | string;
   surname: string;
   firstname: string;
-  age: number;
+  age: number | string;
   gender: string;
   level: string;
   state: string;

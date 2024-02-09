@@ -14,7 +14,7 @@ const DataTable: React.FC<{
   filteredData: StudentDataProps[];
   allStudentInfo: StudentDataProps[];
 }> = ({ filteredData, allStudentInfo }) => {
-  const message = "No Such Filter Found.Would you like to try again";
+  const message = "No Result.Would you like to try again";
   const dataToDisplay = filteredData.length > 0 ? filteredData :  allStudentInfo;
   const handleDownloadClick = async (id:string) => {
    try {

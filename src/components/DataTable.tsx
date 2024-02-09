@@ -1,5 +1,5 @@
 import { usePDF } from "react-to-pdf";
-import { useState , useEffect } from "react";
+import { useState } from "react";
 import {
   Table,
   TableBody,

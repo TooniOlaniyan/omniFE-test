@@ -4,7 +4,6 @@ import DataTable from "./components/DataTable";
 import { useEffect, useState } from "react";
 import { fetchStudentData } from "./lib";
 import { FilterProps, StudentDataProps } from "./types";
-import DownloadResult from "./components/DownloadResult";
 
 function App() {
   const [allStudentInfo, setAllStudentInfo] = useState<StudentDataProps[]>([]);

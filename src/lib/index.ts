@@ -1,7 +1,6 @@
-import ReactDOM  from "react-dom";
 import { FilterProps } from "@/types";
-import DownloadResult from "@/components/DownloadResult";
-import jsPDF from "jspdf";
+
+
 
 export const fetchStudentData = async (filters?: FilterProps) => {
   try {

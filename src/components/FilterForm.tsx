@@ -39,7 +39,7 @@ const FilterForm = ({ onFilterChange, loading  }: any) => {
             id="age"
             onChange={handleFilterChange}
             name="age"
-            className="w-[350px] p-4 rounded-xl border-2 border-gray-400 text-gray-400"
+            className="w-[300px] p-4 rounded-xl border-2 border-gray-400 text-gray-400"
           >
             <option value="">Select Age</option>
             <option value={19}>19</option>
@@ -53,7 +53,7 @@ const FilterForm = ({ onFilterChange, loading  }: any) => {
             id="state"
             onChange={handleFilterChange}
             name="state"
-            className="w-[350px] p-4 rounded-xl border-2 border-gray-400 text-gray-400"
+            className="w-[300px] p-4 rounded-xl border-2 border-gray-400 text-gray-400"
           >
             <option value="">Select State</option>
             <option value="Abuja">Abuja</option>
@@ -67,7 +67,7 @@ const FilterForm = ({ onFilterChange, loading  }: any) => {
             id="level"
             onChange={handleFilterChange}
             name="level"
-            className="w-[350px] p-4 rounded-xl border-2 border-gray-400 text-gray-400"
+            className="w-[300px] p-4 rounded-xl border-2 border-gray-400 text-gray-400"
           >
             <option value="">Select Level</option>
             <option value="100 Level">100</option>
@@ -82,14 +82,14 @@ const FilterForm = ({ onFilterChange, loading  }: any) => {
             id="gender"
             onChange={handleFilterChange}
             name="gender"
-            className="w-[350px] p-4 rounded-xl border-2 border-gray-400 text-gray-400"
+            className="w-[300px] p-4 rounded-xl border-2 border-gray-400 text-gray-400"
           >
             <option value="">Select Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
           </select>
         </div>
-        <button className="bg-primary-green text-white w-[350px] mt-9 py-3">
+        <button className="bg-primary-green text-white w-[300px] mt-9 py-3">
           {loading ? "Loading..." : "Search"}
         </button>
       </form>

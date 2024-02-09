@@ -48,7 +48,6 @@ function App() {
           filteredData={filteredData}
         />
       </div>
-      <DownloadResult/>
     </div>
   );
 }

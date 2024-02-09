@@ -1,4 +1,3 @@
-import { usePDF } from "react-to-pdf";
 import {
   Table,
   TableBody,
@@ -9,14 +8,13 @@ import {
 } from "@/components/ui/table";
 import { resultData } from "@/constant";
 import { cummulative } from "@/constant";
+import { CourseResult } from "@/types";
 
-const DownloadResult = () => {
-  const { toPDF, targetRef } = usePDF({ filename: "studentresult.pdf" });
-  const handleClick = () => {
-    toPDF();
-  };
+const DownloadResult = ({ data }: any) => {
+  const handleClick = () => {};
+  const { firstname, surname, level } = data;
   return (
-    <main ref={targetRef} className="flex flex-col gap-10 p-52">
+    <main className="flex flex-col gap-10 p-52">
       <header className="flex justify-evenly gap-5">
         <img src="#" alt="logo" />
         <div className="flex flex-col items-center gap-4">
@@ -36,20 +34,21 @@ const DownloadResult = () => {
       <div className="flex flex-col">
         <div className="flex justify-between">
           <p className="font-bold">
-            Name: <span className="text-gray-400 ml-4">Chi James</span>
+            Name:{" "}
+            <span className="text-gray-400 ml-4">
+              {firstname} {surname}
+            </span>
           </p>
           <p className="font-bold">
-            Reg No:{" "}
-            <span className="text-gray-400 ml-4">FCE/PGDE/2021/002</span>
+            Reg No: <span className="text-gray-400 ml-4">{data.reg_no}</span>
           </p>
         </div>
         <div className="flex justify-between">
           <p className="font-bold">
-            level: <span className="text-gray-400 ml-4">100 level</span>
+            level: <span className="text-gray-400 ml-4">{level}</span>
           </p>
           <p className="font-bold">
-            Session:{" "}
-            <span className="text-gray-400 ml-4">2022/2023 Session</span>
+            Session: <span className="text-gray-400 ml-4">{data.session} </span>
           </p>
         </div>
       </div>
@@ -65,52 +64,29 @@ const DownloadResult = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {resultData.map((info, index) => (
-            <TableRow className="w-full" key={index}>
-              <TableCell
-                className={`font-medium text-gray-400 ${
-                  index % 2 === 0 ? "bg-gray-200" : "bg-white"
-                }`}
-              >
-                {info.coursecode}
-              </TableCell>
-              <TableCell
-                className={`font-medium text-gray-400 ${
-                  index % 2 === 0 ? "bg-gray-200" : "bg-white"
-                }`}
-              >
-                {info.title}
-              </TableCell>
-              <TableCell
-                className={`font-medium text-gray-400 ${
-                  index % 2 === 0 ? "bg-gray-200" : "bg-white"
-                }`}
-              >
-                {info.creditunit}
-              </TableCell>
-              <TableCell
-                className={`font-medium text-gray-400 ${
-                  index % 2 === 0 ? "bg-gray-200" : "bg-white"
-                }`}
-              >
-                {info.grade}
-              </TableCell>
-              <TableCell
-                className={`font-medium text-gray-400 ${
-                  index % 2 === 0 ? "bg-gray-200" : "bg-white"
-                }`}
-              >
-                {info.totalpoint}
-              </TableCell>
-              <TableCell
-                className={`font-medium text-gray-400 ${
-                  index % 2 === 0 ? "bg-gray-200" : "bg-white"
-                }`}
-              >
-                {info.totalpoint}
-              </TableCell>
-            </TableRow>
-          ))}
+          {data.result &&
+            data.result.map((resultItem:CourseResult, index:number) => (
+              <TableRow key={index}>
+                <TableCell className="font-medium text-gray-400">
+                  {index}
+                </TableCell>
+                <TableCell className="font-medium text-gray-400">
+                  {resultItem.coursecode}
+                </TableCell>
+                <TableCell className="font-medium text-gray-400">
+                  {resultItem.title}
+                </TableCell>
+                <TableCell className="font-medium text-gray-400">
+                  {resultItem.credit_unit}
+                </TableCell>
+                <TableCell className="font-medium text-gray-400">
+                  {resultItem.grade}
+                </TableCell>
+                <TableCell className="font-medium text-gray-400">
+                  {resultItem.total_point}
+                </TableCell>
+              </TableRow>
+            ))}
         </TableBody>
       </Table>
       <Table className="w-[30rem]">

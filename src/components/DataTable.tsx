@@ -1,4 +1,5 @@
-
+import { usePDF } from "react-to-pdf";
+import { useState } from "react";
 import {
   Table,
   TableBody,
@@ -7,24 +8,40 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { handleDownload } from "@/lib";
 import { StudentDataProps } from "@/types";
+import DownloadResult from "./DownloadResult";
 
 const DataTable: React.FC<{
   filteredData: StudentDataProps[];
   allStudentInfo: StudentDataProps[];
 }> = ({ filteredData, allStudentInfo }) => {
+  const [studentResult, setStudentResult] = useState({});
   const message = "No Result.Would you like to try again";
-  const dataToDisplay = filteredData.length > 0 ? filteredData :  allStudentInfo;
-  const handleDownloadClick = async (id:string) => {
-   try {
-     await handleDownload(id);
-    
-    
-   } catch (error) {
-    console.log(error)
-    
-   }
+  const dataToDisplay = filteredData.length > 0 ? filteredData : allStudentInfo;
+  const { toPDF, targetRef } = usePDF({ filename: "studentresult.pdf" });
+  const handleDownloadClick = async (id: string) => {
+    try {
+      let url = `https://test.omniswift.com.ng/api/viewResult/${id}`;
+      let requestOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const response = await fetch(url, requestOptions);
+      const data = await response.json();
+      if (data && data.message === "Successfull" && data.data) {
+        setStudentResult(data.data);
+        console.log(data.data);
+      } else {
+        console.error("Error: Unexpected response format");
+      }
+
+      console.log(studentResult);
+      toPDF();
+    } catch (error) {
+      console.error("Error downloading results:", error);
+    }
   };
   return (
     <div className="bg-white">
@@ -88,6 +105,9 @@ const DataTable: React.FC<{
           )}
         </TableBody>
       </Table>
+      <div ref={targetRef}>
+        {studentResult && <DownloadResult data={studentResult} />}
+      </div>
     </div>
   );
 };

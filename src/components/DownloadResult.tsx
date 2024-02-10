@@ -9,11 +9,11 @@ import {
 import { CourseResult } from "@/types";
 
 const DownloadResult = ({ data }: any) => {
-  const { firstname, surname, level } = data;
+  
   return (
     <main className="flex flex-col gap-10 p-52">
       <header className="flex justify-evenly gap-5">
-        <img src="#" alt="logo" />
+        <img src={data.logo} alt="logo" />
         <div className="flex flex-col items-center gap-4">
           <h2 className="text-gray-400 font-bold">
             FREMONT COLLEGE OF EDUCATION
@@ -26,26 +26,26 @@ const DownloadResult = ({ data }: any) => {
             Student First Statement Of Result
           </p>
         </div>
-        <img src="#" alt="passport" />
+        <img src={data.profile_picture} alt="passport" />
       </header>
       <div className="flex flex-col">
         <div className="flex justify-between">
           <p className="font-bold">
             Name:{" "}
             <span className="text-gray-400 ml-4">
-              {firstname} {surname}
+              {data.data.firstname} {data.data.surname}
             </span>
           </p>
           <p className="font-bold">
-            Reg No: <span className="text-gray-400 ml-4">{data.reg_no}</span>
+            Reg No: <span className="text-gray-400 ml-4">{data.data.reg_no}</span>
           </p>
         </div>
         <div className="flex justify-between">
           <p className="font-bold">
-            level: <span className="text-gray-400 ml-4">{level}</span>
+            level: <span className="text-gray-400 ml-4">{data.data.level}</span>
           </p>
           <p className="font-bold">
-            Session: <span className="text-gray-400 ml-4">{data.session} </span>
+            Session: <span className="text-gray-400 ml-4">{data.data.session} </span>
           </p>
         </div>
       </div>
@@ -61,8 +61,8 @@ const DownloadResult = ({ data }: any) => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.result &&
-            data.result.map((resultItem: CourseResult, index: number) => (
+          {data.data.result &&
+            data.data.result.map((resultItem: CourseResult, index: number) => (
               <TableRow key={index}>
                 <TableCell className="font-medium text-gray-400">
                   {index}
@@ -98,31 +98,31 @@ const DownloadResult = ({ data }: any) => {
           </TableRow>
         </TableHeader>
         <TableBody className="bg-gray-200">
-          {data.cummulative && (
+          {data.data.cummulative && (
             <TableRow>
               <TableCell className="font-medium text-gray-400">
-                {data.cummulative.unts}
+                {data.data.cummulative.unts}
               </TableCell>
               <TableCell className="font-medium text-gray-400">
-                {data.cummulative.untd}
+                {data.data.cummulative.untd}
               </TableCell>
               <TableCell className="font-medium text-gray-400">
-                {data.cummulative.gpts}
+                {data.data.cummulative.gpts}
               </TableCell>
               <TableCell className="font-medium text-gray-400">
-                {data.cummulative.gptd}
+                {data.data.cummulative.gptd}
               </TableCell>
               <TableCell className="font-medium text-gray-400">
-                {data.cummulative.gpats}
+                {data.data.cummulative.gpats}
               </TableCell>
               <TableCell className="font-medium text-gray-400">
-                {data.cummulative.gpatd}
+                {data.data.cummulative.gpatd}
               </TableCell>
             </TableRow>
           )}
         </TableBody>
       </Table>
-      <p>Remarks: Pass</p>
+      <p>Remarks: {data.data.cummulative.remarks}</p>
       <div>Resgistra</div>
     </main>
   );

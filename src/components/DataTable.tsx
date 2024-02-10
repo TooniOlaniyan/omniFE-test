@@ -30,11 +30,6 @@ const DataTable: React.FC<{
   const message = "No Result.Would you like to try again";
   const dataToDisplay = filteredData.length > 0 ? filteredData : allStudentInfo;
   const { toPDF, targetRef } = usePDF({ filename: "studentresult.pdf" });
-    // useEffect(() => {
-    //   if (studentResult) {
-    //     toPDF();
-    //   }
-    // }, [studentResult]);
   const handleDownloadClick = async (id: string) => {
     try {
       let url = `https://test.omniswift.com.ng/api/viewResult/${id}`;
@@ -46,9 +41,9 @@ const DataTable: React.FC<{
       };
       const response = await fetch(url, requestOptions);
       const data = await response.json();
-      if (data && data.message === "Successfull" && data.data) {
-        setStudentResult(data.data);
-        console.log(data.data);
+      if (data && data.message === "Successfull") {
+        setStudentResult(data);
+        // console.log(data);
       } else {
         console.error("Error: Unexpected response format");
       }

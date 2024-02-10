@@ -1,13 +1,14 @@
 import { ChangeEvent, useState } from "react";
 import { FilterProps } from "@/types";
 
-const FilterForm = ({ onFilterChange, loading  }: any) => {
+const FilterForm = ({ onFilterChange, loading }: any) => {
   const [filters, setFilters] = useState<FilterProps>({
     age: "",
     state: "",
     level: "",
     gender: "",
   });
+
   const handleFilterChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
     const strValue = String(value);
@@ -19,12 +20,13 @@ const FilterForm = ({ onFilterChange, loading  }: any) => {
   const handleSearchFilter = (e: React.FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
-      console.log(filters);
+      // console.log(filters);
       onFilterChange(filters);
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
     <div className="bg-white flex flex-col gap-5 p-8 items-start">
       <h1 className="text-gray-400">Filter Student Table By:</h1>

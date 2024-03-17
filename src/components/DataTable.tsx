@@ -25,9 +25,10 @@ import {
 const DataTable: React.FC<{
   filteredData: StudentDataProps[];
   allStudentInfo: StudentDataProps[];
-}> = ({ filteredData, allStudentInfo }) => {
+  message:string
+}> = ({ filteredData, allStudentInfo , message }) => {
   const [studentResult, setStudentResult] = useState({});
-  const message = "No Result.Would you like to try again";
+
   const dataToDisplay = filteredData.length > 0 ? filteredData : allStudentInfo;
   const { toPDF, targetRef } = usePDF({ filename: "studentresult.pdf" });
   const handleDownloadClick = async (id: string) => {

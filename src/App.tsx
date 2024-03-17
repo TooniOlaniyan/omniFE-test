@@ -8,6 +8,7 @@ import { FilterProps, StudentDataProps } from "./types";
 function App() {
   const [allStudentInfo, setAllStudentInfo] = useState<StudentDataProps[]>([]);
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
   const [filteredData, setFilteredData] = useState<StudentDataProps[]>([]);
   useEffect(() => {
     const fetchAllData = async () => {
@@ -25,9 +26,12 @@ function App() {
     try {
       setLoading(true);
       const filteredData = await fetchStudentData(filters);
-      console.log(filteredData)
-        setFilteredData(filteredData);
-      setLoading(false)
+      if (filteredData.length == 0) {
+        setMessage("No Filter Data Found.Please try again");
+      }
+      console.log(filteredData);
+      setFilteredData(filteredData);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching filtered data:", error);
       setLoading(false);
@@ -43,6 +47,7 @@ function App() {
       </div>
       <div>
         <DataTable
+          message={message}
           allStudentInfo={allStudentInfo}
           filteredData={filteredData}
         />

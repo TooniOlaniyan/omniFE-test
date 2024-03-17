@@ -21,7 +21,7 @@ export const fetchStudentData = async (filters?: FilterProps) => {
     }
     const response = await fetch(url, requestOptions);
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
 
     if (response.ok) {
       return data.data.students;
